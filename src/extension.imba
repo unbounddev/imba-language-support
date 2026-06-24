@@ -35,7 +35,7 @@ export def activate(context\ExtensionContext)
 	const imbaSelector =
 		scheme: "file"
 		language: "imba"
-	const triggerCharacters = ['<', ' ']
+	const triggerCharacters = ['<', ' ', '[']
 	const provider = languages.registerCompletionItemProvider(imbaSelector, new ImbaCompletionProvider, ...triggerCharacters)
 	context.subscriptions.push(disposable, provider)
 

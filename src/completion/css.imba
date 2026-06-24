@@ -22,6 +22,11 @@ import {CompletionItem, CompletionItemKind} from 'vscode';
 
 # https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties#alphabetical_index_of_properties
 # TODO: Add logic to get CSS variables
+# TODO: Add back in properties that are not baseline since they are not on imba.io
+# TODO: Add CSS Modifiers
+# TODO: Add logic to get custom units
+# TODO: Add imba colors
+# TODO: Add logic to get user-defined classes
 export const properties = [
 	{name: "additive-symbols", doc: "", kind: CompletionItemKind.Property}
 	{name: "align-content", doc: "ac", kind: CompletionItemKind.Property}

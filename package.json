@@ -1,0 +1,42 @@
+{
+  "name": "imba-language-support",
+  "publisher": "unbounddev",
+  "displayName": "imba-language-support",
+  "description": "Language support for Imba",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:imba",
+    "onLanguage:imba1",
+    "workspaceContains:**/*.imba",
+    "workspaceContains:**/imbaconfig.json"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "imba-language-support.helloWorld",
+        "title": "Hello World"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "imba build --node.external +vscode ./src/extension.imba",
+    "watch": "imba build --node.external +vscode -w ./src/extension.imba",
+    "pretest": "npm run build",
+    "clean": "rm -rf ~/.local/share/code-server/extensions/unbounddev.imba-language-support-${npm_package_version}",
+    "test": "rm -rf ~/.local/share/code-server/extensions/unbounddev.imba-language-support-${npm_package_version} && cp -r . ~/.local/share/code-server/extensions/unbounddev.imba-language-support-${npm_package_version}"
+  },
+  "devDependencies": {
+    "@types/node": "22.x",
+    "@types/vscode": "^1.125.0",
+    "imba": "2.0.0-alpha.247",
+    "typescript": "^5.9.3"
+  }
+}

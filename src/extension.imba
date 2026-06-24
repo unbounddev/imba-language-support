@@ -1,26 +1,20 @@
 import {commands, window, languages, CompletionItem, CompletionItemKind, SnippetString, MarkdownString} from 'vscode';
 import type {ExtensionContext, TextDocument, Position, CancellationToken, CompletionContext} from 'vscode';
+import {tags} from "./completion/html"
 
-const tags = [
-	{name: "h1", doc: "HTMLHeadingElement", kind: CompletionItemKind.Class}
-	{name: "h2", doc: "HTMLHeadingElement", kind: CompletionItemKind.Class}
-	{name: "h3", doc: "HTMLHeadingElement", kind: CompletionItemKind.Class}
-	{name: "h4", doc: "HTMLHeadingElement", kind: CompletionItemKind.Class}
-	{name: "h5", doc: "HTMLHeadingElement", kind: CompletionItemKind.Class}
-	{name: "h6", doc: "HTMLHeadingElement", kind: CompletionItemKind.Class}
-]
 
 class ImbaCompletionProvider
 	def provideCompletionItems(doc\TextDocument, pos\Position, tok\CancellationToken, ctx\CompletionContext)
 		const items\CompletionItem[] = [];
-		const headings = [];
-		for htmlTag of tags
-			const item = new CompletionItem(htmlTag.name, htmlTag.kind)
-			if htmlTag.snippet
-				item.insertText = new SnippetString(htmlTag.snippet)
-			if htmlTag.doc
-				item.documentation = new MarkdownString(htmlTag.doc)
-			items.push(item)
+		# only render htmlTags if '<' is trigger
+		if ctx.triggerCharacter != null and ctx.triggerCharacter == "<"
+			for htmlTag of tags
+				const item = new CompletionItem(htmlTag.name, htmlTag.kind)
+				if htmlTag.snippet
+					item.insertText = new SnippetString(htmlTag.snippet)
+				if htmlTag.doc
+					item.documentation = new MarkdownString(htmlTag.doc)
+				items.push(item)
 		return items
 	# def resolveCompletionItem
 

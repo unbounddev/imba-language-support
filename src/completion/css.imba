@@ -1,17 +1,35 @@
 import {CompletionItem, CompletionItemKind} from 'vscode';
 
+# Script to grab css properties from imba.io
+# let styles = Array.from(document.querySelectorAll("api-li a.name"))
+# styles = styles.map(p => ({ e: p.innerText, after: window.getComputedStyle(p, '::after').content.replace(/^"|"$/g, '')}))
+# styles = styles.map(p => {
+#     let after = p.after;
+#     if (p.after){
+#         after = p.after.split("/")[1].trim()
+#     } else {
+#         after = ""
+#     }
+#     return {...p, after}
+# })
+# let finalStyles = styles.map(p => `{name: "${p.e}", doc: "${p.after}", kind: CompletionItemKind.Property}`)
+# let tempStyles = styles.filter(p => p.after)
+# let shortStyles = tempStyles.map(p => `{name: "${p.after}", doc: "${p.e}", kind: CompletionItemKind.Property}`)
+# let allStyles = finalStyles.concat(shortStyles)
+
+# console.log(allStyles.join(`\n\t`))
+
+
 # https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties#alphabetical_index_of_properties
 # TODO: Add logic to get CSS variables
 export const properties = [
-	{name: "accent-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "align-content", doc: "", kind: CompletionItemKind.Property}
-	{name: "align-items", doc: "", kind: CompletionItemKind.Property}
-	{name: "align-self", doc: "", kind: CompletionItemKind.Property}
-	{name: "alignment-baseline", doc: "", kind: CompletionItemKind.Property}
+	{name: "additive-symbols", doc: "", kind: CompletionItemKind.Property}
+	{name: "align-content", doc: "ac", kind: CompletionItemKind.Property}
+	{name: "align-items", doc: "ai", kind: CompletionItemKind.Property}
+	{name: "align-self", doc: "as", kind: CompletionItemKind.Property}
 	{name: "all", doc: "", kind: CompletionItemKind.Property}
-	{name: "anchor-name", doc: "", kind: CompletionItemKind.Property}
-	{name: "anchor-scope", doc: "", kind: CompletionItemKind.Property}
-	{name: "animation-composition", doc: "", kind: CompletionItemKind.Property}
+	{name: "alt", doc: "", kind: CompletionItemKind.Property}
+	{name: "animation", doc: "", kind: CompletionItemKind.Property}
 	{name: "animation-delay", doc: "", kind: CompletionItemKind.Property}
 	{name: "animation-direction", doc: "", kind: CompletionItemKind.Property}
 	{name: "animation-duration", doc: "", kind: CompletionItemKind.Property}
@@ -19,298 +37,240 @@ export const properties = [
 	{name: "animation-iteration-count", doc: "", kind: CompletionItemKind.Property}
 	{name: "animation-name", doc: "", kind: CompletionItemKind.Property}
 	{name: "animation-play-state", doc: "", kind: CompletionItemKind.Property}
-	{name: "animation-range-end", doc: "", kind: CompletionItemKind.Property}
-	{name: "animation-range-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "animation-range", doc: "", kind: CompletionItemKind.Property}
-	{name: "animation-timeline", doc: "", kind: CompletionItemKind.Property}
 	{name: "animation-timing-function", doc: "", kind: CompletionItemKind.Property}
-	{name: "animation", doc: "", kind: CompletionItemKind.Property}
 	{name: "appearance", doc: "", kind: CompletionItemKind.Property}
 	{name: "aspect-ratio", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-filter", doc: "", kind: CompletionItemKind.Property}
+	{name: "azimuth", doc: "", kind: CompletionItemKind.Property}
+	{name: "backdrop-filter", doc: "", kind: CompletionItemKind.Property}
 	{name: "backface-visibility", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-attachment", doc: "", kind: CompletionItemKind.Property}
+	{name: "background", doc: "bg", kind: CompletionItemKind.Property}
+	{name: "background-attachment", doc: "bga", kind: CompletionItemKind.Property}
 	{name: "background-blend-mode", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-clip", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-image", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-origin", doc: "", kind: CompletionItemKind.Property}
+	{name: "background-clip", doc: "bgclip", kind: CompletionItemKind.Property}
+	{name: "background-color", doc: "bgc", kind: CompletionItemKind.Property}
+	{name: "background-image", doc: "bgi", kind: CompletionItemKind.Property}
+	{name: "background-origin", doc: "bgo", kind: CompletionItemKind.Property}
+	{name: "background-position", doc: "bgp", kind: CompletionItemKind.Property}
 	{name: "background-position-x", doc: "", kind: CompletionItemKind.Property}
 	{name: "background-position-y", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-position", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-repeat", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-repeat-x", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-repeat-y", doc: "", kind: CompletionItemKind.Property}
-	{name: "background-size", doc: "", kind: CompletionItemKind.Property}
-	{name: "background", doc: "", kind: CompletionItemKind.Property}
-	{name: "baseline-shift", doc: "", kind: CompletionItemKind.Property}
-	{name: "baseline-source", doc: "", kind: CompletionItemKind.Property}
+	{name: "background-repeat", doc: "bgr", kind: CompletionItemKind.Property}
+	{name: "background-size", doc: "bgs", kind: CompletionItemKind.Property}
+	{name: "behavior", doc: "", kind: CompletionItemKind.Property}
+	{name: "bleed", doc: "", kind: CompletionItemKind.Property}
 	{name: "block-size", doc: "", kind: CompletionItemKind.Property}
+	{name: "border", doc: "bd", kind: CompletionItemKind.Property}
+	{name: "border-block", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-block-color", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-block-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-block-end-color", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-block-end-style", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-block-end-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-block-end", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-block-start", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-block-start-color", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-block-start-style", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-block-start-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-block-start", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-block-style", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-block-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-block", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-bottom-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-bottom-left-radius", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-bottom-right-radius", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-bottom-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-bottom-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-bottom", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-bottom", doc: "bdb", kind: CompletionItemKind.Property}
+	{name: "border-bottom-color", doc: "bcb", kind: CompletionItemKind.Property}
+	{name: "border-bottom-left-radius", doc: "rdbl", kind: CompletionItemKind.Property}
+	{name: "border-bottom-right-radius", doc: "rdbr", kind: CompletionItemKind.Property}
+	{name: "border-bottom-style", doc: "bsb", kind: CompletionItemKind.Property}
+	{name: "border-bottom-width", doc: "bwb", kind: CompletionItemKind.Property}
 	{name: "border-collapse", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-color", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-color", doc: "bc", kind: CompletionItemKind.Property}
 	{name: "border-end-end-radius", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-end-start-radius", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-image", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-image-outset", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-image-repeat", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-image-slice", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-image-source", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-image-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-image", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-inline", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-inline-color", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-inline-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-inline-end-color", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-inline-end-style", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-inline-end-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-inline-end", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-inline-start", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-inline-start-color", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-inline-start-style", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-inline-start-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-inline-start", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-inline-style", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-inline-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-inline", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-left-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-left-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-left-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-left", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-radius", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-right-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-right-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-right-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-right", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-left", doc: "bdl", kind: CompletionItemKind.Property}
+	{name: "border-left-color", doc: "bcl", kind: CompletionItemKind.Property}
+	{name: "border-left-style", doc: "bsl", kind: CompletionItemKind.Property}
+	{name: "border-left-width", doc: "bwl", kind: CompletionItemKind.Property}
+	{name: "border-radius", doc: "rd", kind: CompletionItemKind.Property}
+	{name: "border-right", doc: "bdr", kind: CompletionItemKind.Property}
+	{name: "border-right-color", doc: "bcr", kind: CompletionItemKind.Property}
+	{name: "border-right-style", doc: "bsr", kind: CompletionItemKind.Property}
+	{name: "border-right-width", doc: "bwr", kind: CompletionItemKind.Property}
 	{name: "border-spacing", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-start-end-radius", doc: "", kind: CompletionItemKind.Property}
 	{name: "border-start-start-radius", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-top-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-top-left-radius", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-top-right-radius", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-top-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-top-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-top", doc: "", kind: CompletionItemKind.Property}
-	{name: "border-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "border", doc: "", kind: CompletionItemKind.Property}
-	{name: "bottom", doc: "", kind: CompletionItemKind.Property}
-	{name: "box-align", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-style", doc: "bs", kind: CompletionItemKind.Property}
+	{name: "border-top", doc: "bdt", kind: CompletionItemKind.Property}
+	{name: "border-top-color", doc: "bct", kind: CompletionItemKind.Property}
+	{name: "border-top-left-radius", doc: "rdtl", kind: CompletionItemKind.Property}
+	{name: "border-top-right-radius", doc: "rdtr", kind: CompletionItemKind.Property}
+	{name: "border-top-style", doc: "bst", kind: CompletionItemKind.Property}
+	{name: "border-top-width", doc: "bwt", kind: CompletionItemKind.Property}
+	{name: "border-width", doc: "bw", kind: CompletionItemKind.Property}
+	{name: "bottom", doc: "b", kind: CompletionItemKind.Property}
 	{name: "box-decoration-break", doc: "", kind: CompletionItemKind.Property}
-	{name: "box-direction", doc: "", kind: CompletionItemKind.Property}
-	{name: "box-flex-group", doc: "", kind: CompletionItemKind.Property}
-	{name: "box-flex", doc: "", kind: CompletionItemKind.Property}
-	{name: "box-lines", doc: "", kind: CompletionItemKind.Property}
 	{name: "box-ordinal-group", doc: "", kind: CompletionItemKind.Property}
-	{name: "box-orient", doc: "", kind: CompletionItemKind.Property}
-	{name: "box-pack", doc: "", kind: CompletionItemKind.Property}
-	{name: "box-shadow", doc: "", kind: CompletionItemKind.Property}
+	{name: "box-shadow", doc: "bxs", kind: CompletionItemKind.Property}
 	{name: "box-sizing", doc: "", kind: CompletionItemKind.Property}
 	{name: "break-after", doc: "", kind: CompletionItemKind.Property}
 	{name: "break-before", doc: "", kind: CompletionItemKind.Property}
 	{name: "break-inside", doc: "", kind: CompletionItemKind.Property}
 	{name: "caption-side", doc: "", kind: CompletionItemKind.Property}
-	{name: "caret-animation", doc: "", kind: CompletionItemKind.Property}
 	{name: "caret-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "caret-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "caret", doc: "", kind: CompletionItemKind.Property}
 	{name: "clear", doc: "", kind: CompletionItemKind.Property}
+	{name: "clip", doc: "", kind: CompletionItemKind.Property}
 	{name: "clip-path", doc: "", kind: CompletionItemKind.Property}
 	{name: "clip-rule", doc: "", kind: CompletionItemKind.Property}
-	{name: "clip", doc: "", kind: CompletionItemKind.Property}
+	{name: "color", doc: "c", kind: CompletionItemKind.Property}
+	{name: "color-adjust", doc: "", kind: CompletionItemKind.Property}
 	{name: "color-interpolation-filters", doc: "", kind: CompletionItemKind.Property}
-	{name: "color-interpolation", doc: "", kind: CompletionItemKind.Property}
-	{name: "color-scheme", doc: "", kind: CompletionItemKind.Property}
-	{name: "color", doc: "", kind: CompletionItemKind.Property}
 	{name: "column-count", doc: "", kind: CompletionItemKind.Property}
 	{name: "column-fill", doc: "", kind: CompletionItemKind.Property}
-	{name: "column-gap", doc: "", kind: CompletionItemKind.Property}
-	{name: "column-height", doc: "", kind: CompletionItemKind.Property}
+	{name: "column-gap", doc: "cg", kind: CompletionItemKind.Property}
+	{name: "column-rule", doc: "", kind: CompletionItemKind.Property}
 	{name: "column-rule-color", doc: "", kind: CompletionItemKind.Property}
 	{name: "column-rule-style", doc: "", kind: CompletionItemKind.Property}
 	{name: "column-rule-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "column-rule", doc: "", kind: CompletionItemKind.Property}
 	{name: "column-span", doc: "", kind: CompletionItemKind.Property}
 	{name: "column-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "column-wrap", doc: "", kind: CompletionItemKind.Property}
 	{name: "columns", doc: "", kind: CompletionItemKind.Property}
-	{name: "contain-intrinsic-block-size", doc: "", kind: CompletionItemKind.Property}
-	{name: "contain-intrinsic-height", doc: "", kind: CompletionItemKind.Property}
-	{name: "contain-intrinsic-inline-size", doc: "", kind: CompletionItemKind.Property}
-	{name: "contain-intrinsic-size", doc: "", kind: CompletionItemKind.Property}
-	{name: "contain-intrinsic-width", doc: "", kind: CompletionItemKind.Property}
 	{name: "contain", doc: "", kind: CompletionItemKind.Property}
-	{name: "container-name", doc: "", kind: CompletionItemKind.Property}
-	{name: "container-type", doc: "", kind: CompletionItemKind.Property}
-	{name: "container", doc: "", kind: CompletionItemKind.Property}
-	{name: "content-visibility", doc: "", kind: CompletionItemKind.Property}
 	{name: "content", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-block-end-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-block-start-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-bottom-left-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-bottom-right-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-bottom-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-end-end-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-end-start-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-inline-end-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-inline-start-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-left-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-right-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-start-end-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-start-start-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-top-left-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-top-right-shape", doc: "", kind: CompletionItemKind.Property}
-	{name: "corner-top-shape", doc: "", kind: CompletionItemKind.Property}
 	{name: "counter-increment", doc: "", kind: CompletionItemKind.Property}
 	{name: "counter-reset", doc: "", kind: CompletionItemKind.Property}
 	{name: "counter-set", doc: "", kind: CompletionItemKind.Property}
 	{name: "cursor", doc: "", kind: CompletionItemKind.Property}
-	{name: "cx", doc: "", kind: CompletionItemKind.Property}
-	{name: "cy", doc: "", kind: CompletionItemKind.Property}
-	{name: "d", doc: "", kind: CompletionItemKind.Property}
 	{name: "direction", doc: "", kind: CompletionItemKind.Property}
-	{name: "display", doc: "", kind: CompletionItemKind.Property}
-	{name: "dominant-baseline", doc: "", kind: CompletionItemKind.Property}
-	{name: "dynamic-range-limit", doc: "", kind: CompletionItemKind.Property}
+	{name: "display", doc: "d", kind: CompletionItemKind.Property}
 	{name: "empty-cells", doc: "", kind: CompletionItemKind.Property}
-	{name: "field-sizing", doc: "", kind: CompletionItemKind.Property}
+	{name: "enable-background", doc: "", kind: CompletionItemKind.Property}
+	{name: "fallback", doc: "", kind: CompletionItemKind.Property}
+	{name: "fill", doc: "", kind: CompletionItemKind.Property}
 	{name: "fill-opacity", doc: "", kind: CompletionItemKind.Property}
 	{name: "fill-rule", doc: "", kind: CompletionItemKind.Property}
-	{name: "fill", doc: "", kind: CompletionItemKind.Property}
 	{name: "filter", doc: "", kind: CompletionItemKind.Property}
-	{name: "flex-basis", doc: "", kind: CompletionItemKind.Property}
-	{name: "flex-direction", doc: "", kind: CompletionItemKind.Property}
-	{name: "flex-flow", doc: "", kind: CompletionItemKind.Property}
-	{name: "flex-grow", doc: "", kind: CompletionItemKind.Property}
-	{name: "flex-shrink", doc: "", kind: CompletionItemKind.Property}
-	{name: "flex-wrap", doc: "", kind: CompletionItemKind.Property}
-	{name: "flex", doc: "", kind: CompletionItemKind.Property}
+	{name: "flex", doc: "fl", kind: CompletionItemKind.Property}
+	{name: "flex-basis", doc: "flb", kind: CompletionItemKind.Property}
+	{name: "flex-direction", doc: "fld", kind: CompletionItemKind.Property}
+	{name: "flex-flow", doc: "flf", kind: CompletionItemKind.Property}
+	{name: "flex-grow", doc: "flg", kind: CompletionItemKind.Property}
+	{name: "flex-shrink", doc: "fls", kind: CompletionItemKind.Property}
+	{name: "flex-wrap", doc: "flw", kind: CompletionItemKind.Property}
 	{name: "float", doc: "", kind: CompletionItemKind.Property}
 	{name: "flood-color", doc: "", kind: CompletionItemKind.Property}
 	{name: "flood-opacity", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-family", doc: "", kind: CompletionItemKind.Property}
+	{name: "font", doc: "", kind: CompletionItemKind.Property}
+	{name: "font-display", doc: "", kind: CompletionItemKind.Property}
+	{name: "font-family", doc: "ff", kind: CompletionItemKind.Property}
 	{name: "font-feature-settings", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-kerning", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-language-override", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-optical-sizing", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-palette", doc: "", kind: CompletionItemKind.Property}
+	{name: "font-size", doc: "fs", kind: CompletionItemKind.Property}
 	{name: "font-size-adjust", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-size", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-smooth", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-stretch", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-synthesis-position", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-synthesis-small-caps", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-synthesis-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-synthesis-weight", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-synthesis", doc: "", kind: CompletionItemKind.Property}
+	{name: "font-variant", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-variant-alternates", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-variant-caps", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-variant-east-asian", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-variant-emoji", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-variant-ligatures", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-variant-numeric", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-variant-position", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-variant", doc: "", kind: CompletionItemKind.Property}
 	{name: "font-variation-settings", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-weight", doc: "", kind: CompletionItemKind.Property}
-	{name: "font-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "font", doc: "", kind: CompletionItemKind.Property}
-	{name: "forced-color-adjust", doc: "", kind: CompletionItemKind.Property}
-	{name: "gap", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-area", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-auto-columns", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-auto-flow", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-auto-rows", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-column-end", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-column-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-column", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-row-end", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-row-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-row", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-template-areas", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-template-columns", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-template-rows", doc: "", kind: CompletionItemKind.Property}
-	{name: "grid-template", doc: "", kind: CompletionItemKind.Property}
+	{name: "font-weight", doc: "fw", kind: CompletionItemKind.Property}
+	{name: "gap", doc: "g", kind: CompletionItemKind.Property}
+	{name: "glyph-orientation-horizontal", doc: "", kind: CompletionItemKind.Property}
+	{name: "glyph-orientation-vertical", doc: "", kind: CompletionItemKind.Property}
 	{name: "grid", doc: "", kind: CompletionItemKind.Property}
+	{name: "grid-area", doc: "ga", kind: CompletionItemKind.Property}
+	{name: "grid-auto-columns", doc: "gac", kind: CompletionItemKind.Property}
+	{name: "grid-auto-flow", doc: "gaf", kind: CompletionItemKind.Property}
+	{name: "grid-auto-rows", doc: "gar", kind: CompletionItemKind.Property}
+	{name: "grid-column", doc: "gc", kind: CompletionItemKind.Property}
+	{name: "grid-column-end", doc: "gce", kind: CompletionItemKind.Property}
+	{name: "grid-column-gap", doc: "gcg", kind: CompletionItemKind.Property}
+	{name: "grid-column-start", doc: "gcs", kind: CompletionItemKind.Property}
+	{name: "grid-gap", doc: "", kind: CompletionItemKind.Property}
+	{name: "grid-row", doc: "gr", kind: CompletionItemKind.Property}
+	{name: "grid-row-end", doc: "gre", kind: CompletionItemKind.Property}
+	{name: "grid-row-gap", doc: "grg", kind: CompletionItemKind.Property}
+	{name: "grid-row-start", doc: "grs", kind: CompletionItemKind.Property}
+	{name: "grid-template", doc: "gt", kind: CompletionItemKind.Property}
+	{name: "grid-template-areas", doc: "gta", kind: CompletionItemKind.Property}
+	{name: "grid-template-columns", doc: "gtc", kind: CompletionItemKind.Property}
+	{name: "grid-template-rows", doc: "gtr", kind: CompletionItemKind.Property}
 	{name: "hanging-punctuation", doc: "", kind: CompletionItemKind.Property}
-	{name: "height", doc: "", kind: CompletionItemKind.Property}
-	{name: "hyphenate-character", doc: "", kind: CompletionItemKind.Property}
-	{name: "hyphenate-limit-chars", doc: "", kind: CompletionItemKind.Property}
+	{name: "height", doc: "h", kind: CompletionItemKind.Property}
 	{name: "hyphens", doc: "", kind: CompletionItemKind.Property}
 	{name: "image-orientation", doc: "", kind: CompletionItemKind.Property}
 	{name: "image-rendering", doc: "", kind: CompletionItemKind.Property}
 	{name: "image-resolution", doc: "", kind: CompletionItemKind.Property}
+	{name: "ime-mode", doc: "", kind: CompletionItemKind.Property}
 	{name: "initial-letter", doc: "", kind: CompletionItemKind.Property}
+	{name: "initial-letter-align", doc: "", kind: CompletionItemKind.Property}
 	{name: "inline-size", doc: "", kind: CompletionItemKind.Property}
+	{name: "inset", doc: "", kind: CompletionItemKind.Property}
+	{name: "inset-block", doc: "", kind: CompletionItemKind.Property}
 	{name: "inset-block-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "inset-block-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "inset-block", doc: "", kind: CompletionItemKind.Property}
-	{name: "inset-block", doc: "", kind: CompletionItemKind.Property}
+	{name: "inset-inline", doc: "", kind: CompletionItemKind.Property}
 	{name: "inset-inline-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "inset-inline-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "inset-inline", doc: "", kind: CompletionItemKind.Property}
-	{name: "inset-inline", doc: "", kind: CompletionItemKind.Property}
-	{name: "inset", doc: "", kind: CompletionItemKind.Property}
-	{name: "inset", doc: "", kind: CompletionItemKind.Property}
-	{name: "interactivity", doc: "", kind: CompletionItemKind.Property}
-	{name: "interest-delay", doc: "", kind: CompletionItemKind.Property}
-	{name: "interest-delay-end", doc: "", kind: CompletionItemKind.Property}
-	{name: "interest-delay-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "interpolate-size", doc: "", kind: CompletionItemKind.Property}
 	{name: "isolation", doc: "", kind: CompletionItemKind.Property}
-	{name: "justify-content", doc: "", kind: CompletionItemKind.Property}
-	{name: "justify-items", doc: "", kind: CompletionItemKind.Property}
-	{name: "justify-self", doc: "", kind: CompletionItemKind.Property}
-	{name: "left", doc: "", kind: CompletionItemKind.Property}
-	{name: "letter-spacing", doc: "", kind: CompletionItemKind.Property}
+	{name: "justify-content", doc: "jc", kind: CompletionItemKind.Property}
+	{name: "justify-items", doc: "ji", kind: CompletionItemKind.Property}
+	{name: "justify-self", doc: "js", kind: CompletionItemKind.Property}
+	{name: "kerning", doc: "", kind: CompletionItemKind.Property}
+	{name: "left", doc: "l", kind: CompletionItemKind.Property}
+	{name: "letter-spacing", doc: "ls", kind: CompletionItemKind.Property}
 	{name: "lighting-color", doc: "", kind: CompletionItemKind.Property}
 	{name: "line-break", doc: "", kind: CompletionItemKind.Property}
 	{name: "line-clamp", doc: "", kind: CompletionItemKind.Property}
+	{name: "line-height", doc: "lh", kind: CompletionItemKind.Property}
 	{name: "line-height-step", doc: "", kind: CompletionItemKind.Property}
-	{name: "line-height", doc: "", kind: CompletionItemKind.Property}
+	{name: "list-style", doc: "", kind: CompletionItemKind.Property}
 	{name: "list-style-image", doc: "", kind: CompletionItemKind.Property}
 	{name: "list-style-position", doc: "", kind: CompletionItemKind.Property}
 	{name: "list-style-type", doc: "", kind: CompletionItemKind.Property}
-	{name: "list-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "list-style", doc: "", kind: CompletionItemKind.Property}
+	{name: "margin", doc: "m", kind: CompletionItemKind.Property}
+	{name: "margin-block", doc: "", kind: CompletionItemKind.Property}
 	{name: "margin-block-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "margin-block-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "margin-block", doc: "", kind: CompletionItemKind.Property}
-	{name: "margin-bottom", doc: "", kind: CompletionItemKind.Property}
+	{name: "margin-bottom", doc: "mb", kind: CompletionItemKind.Property}
+	{name: "margin-inline", doc: "", kind: CompletionItemKind.Property}
 	{name: "margin-inline-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "margin-inline-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "margin-inline", doc: "", kind: CompletionItemKind.Property}
-	{name: "margin-left", doc: "", kind: CompletionItemKind.Property}
-	{name: "margin-right", doc: "", kind: CompletionItemKind.Property}
-	{name: "margin-top", doc: "", kind: CompletionItemKind.Property}
+	{name: "margin-left", doc: "ml", kind: CompletionItemKind.Property}
+	{name: "margin-right", doc: "mr", kind: CompletionItemKind.Property}
+	{name: "margin-top", doc: "mt", kind: CompletionItemKind.Property}
 	{name: "margin-trim", doc: "", kind: CompletionItemKind.Property}
-	{name: "margin", doc: "", kind: CompletionItemKind.Property}
+	{name: "marker", doc: "", kind: CompletionItemKind.Property}
 	{name: "marker-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "marker-mid", doc: "", kind: CompletionItemKind.Property}
 	{name: "marker-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "marker", doc: "", kind: CompletionItemKind.Property}
+	{name: "marks", doc: "", kind: CompletionItemKind.Property}
+	{name: "mask", doc: "", kind: CompletionItemKind.Property}
+	{name: "mask-border", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-border-mode", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-border-outset", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-border-repeat", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-border-slice", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-border-source", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-border-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "mask-border", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-clip", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-composite", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-image", doc: "", kind: CompletionItemKind.Property}
@@ -320,136 +280,147 @@ export const properties = [
 	{name: "mask-repeat", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-size", doc: "", kind: CompletionItemKind.Property}
 	{name: "mask-type", doc: "", kind: CompletionItemKind.Property}
-	{name: "mask", doc: "", kind: CompletionItemKind.Property}
-	{name: "math-depth", doc: "", kind: CompletionItemKind.Property}
-	{name: "math-shift", doc: "", kind: CompletionItemKind.Property}
-	{name: "math-style", doc: "", kind: CompletionItemKind.Property}
 	{name: "max-block-size", doc: "", kind: CompletionItemKind.Property}
-	{name: "max-height", doc: "", kind: CompletionItemKind.Property}
+	{name: "max-height", doc: "mah", kind: CompletionItemKind.Property}
 	{name: "max-inline-size", doc: "", kind: CompletionItemKind.Property}
-	{name: "max-width", doc: "", kind: CompletionItemKind.Property}
+	{name: "max-lines", doc: "", kind: CompletionItemKind.Property}
+	{name: "max-width", doc: "maw", kind: CompletionItemKind.Property}
+	{name: "max-zoom", doc: "", kind: CompletionItemKind.Property}
 	{name: "min-block-size", doc: "", kind: CompletionItemKind.Property}
-	{name: "min-height", doc: "", kind: CompletionItemKind.Property}
+	{name: "min-height", doc: "mih", kind: CompletionItemKind.Property}
 	{name: "min-inline-size", doc: "", kind: CompletionItemKind.Property}
-	{name: "min-width", doc: "", kind: CompletionItemKind.Property}
+	{name: "min-width", doc: "miw", kind: CompletionItemKind.Property}
+	{name: "min-zoom", doc: "", kind: CompletionItemKind.Property}
 	{name: "mix-blend-mode", doc: "", kind: CompletionItemKind.Property}
+	{name: "motion", doc: "", kind: CompletionItemKind.Property}
+	{name: "motion-offset", doc: "", kind: CompletionItemKind.Property}
+	{name: "motion-path", doc: "", kind: CompletionItemKind.Property}
+	{name: "motion-rotation", doc: "", kind: CompletionItemKind.Property}
+	{name: "nav-down", doc: "", kind: CompletionItemKind.Property}
+	{name: "nav-index", doc: "", kind: CompletionItemKind.Property}
+	{name: "nav-left", doc: "", kind: CompletionItemKind.Property}
+	{name: "nav-right", doc: "", kind: CompletionItemKind.Property}
+	{name: "nav-up", doc: "", kind: CompletionItemKind.Property}
+	{name: "negative", doc: "", kind: CompletionItemKind.Property}
 	{name: "object-fit", doc: "", kind: CompletionItemKind.Property}
 	{name: "object-position", doc: "", kind: CompletionItemKind.Property}
-	{name: "object-view-box", doc: "", kind: CompletionItemKind.Property}
+	{name: "offset", doc: "", kind: CompletionItemKind.Property}
 	{name: "offset-anchor", doc: "", kind: CompletionItemKind.Property}
+	{name: "offset-block-end", doc: "", kind: CompletionItemKind.Property}
+	{name: "offset-block-start", doc: "", kind: CompletionItemKind.Property}
 	{name: "offset-distance", doc: "", kind: CompletionItemKind.Property}
+	{name: "offset-inline-end", doc: "", kind: CompletionItemKind.Property}
+	{name: "offset-inline-start", doc: "", kind: CompletionItemKind.Property}
 	{name: "offset-path", doc: "", kind: CompletionItemKind.Property}
 	{name: "offset-position", doc: "", kind: CompletionItemKind.Property}
 	{name: "offset-rotate", doc: "", kind: CompletionItemKind.Property}
-	{name: "offset", doc: "", kind: CompletionItemKind.Property}
-	{name: "opacity", doc: "", kind: CompletionItemKind.Property}
+	{name: "opacity", doc: "o", kind: CompletionItemKind.Property}
 	{name: "order", doc: "", kind: CompletionItemKind.Property}
+	{name: "orientation", doc: "", kind: CompletionItemKind.Property}
 	{name: "orphans", doc: "", kind: CompletionItemKind.Property}
-	{name: "outline-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "outline-offset", doc: "", kind: CompletionItemKind.Property}
-	{name: "outline-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "outline-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "outline", doc: "", kind: CompletionItemKind.Property}
-	{name: "overflow-anchor", doc: "", kind: CompletionItemKind.Property}
+	{name: "outline", doc: "ol", kind: CompletionItemKind.Property}
+	{name: "outline-color", doc: "olc", kind: CompletionItemKind.Property}
+	{name: "outline-offset", doc: "olo", kind: CompletionItemKind.Property}
+	{name: "outline-style", doc: "ols", kind: CompletionItemKind.Property}
+	{name: "outline-width", doc: "olw", kind: CompletionItemKind.Property}
+	{name: "overflow", doc: "of", kind: CompletionItemKind.Property}
+	{name: "overflow-anchor", doc: "ofa", kind: CompletionItemKind.Property}
 	{name: "overflow-block", doc: "", kind: CompletionItemKind.Property}
-	{name: "overflow-clip-margin", doc: "", kind: CompletionItemKind.Property}
+	{name: "overflow-clip-box", doc: "", kind: CompletionItemKind.Property}
 	{name: "overflow-inline", doc: "", kind: CompletionItemKind.Property}
 	{name: "overflow-wrap", doc: "", kind: CompletionItemKind.Property}
-	{name: "overflow-x", doc: "", kind: CompletionItemKind.Property}
-	{name: "overflow-y", doc: "", kind: CompletionItemKind.Property}
-	{name: "overflow", doc: "", kind: CompletionItemKind.Property}
-	{name: "overlay", doc: "", kind: CompletionItemKind.Property}
+	{name: "overflow-x", doc: "ofx", kind: CompletionItemKind.Property}
+	{name: "overflow-y", doc: "ofy", kind: CompletionItemKind.Property}
+	{name: "overscroll-behavior", doc: "", kind: CompletionItemKind.Property}
 	{name: "overscroll-behavior-block", doc: "", kind: CompletionItemKind.Property}
 	{name: "overscroll-behavior-inline", doc: "", kind: CompletionItemKind.Property}
 	{name: "overscroll-behavior-x", doc: "", kind: CompletionItemKind.Property}
 	{name: "overscroll-behavior-y", doc: "", kind: CompletionItemKind.Property}
-	{name: "overscroll-behavior", doc: "", kind: CompletionItemKind.Property}
+	{name: "pad", doc: "", kind: CompletionItemKind.Property}
+	{name: "padding", doc: "p", kind: CompletionItemKind.Property}
+	{name: "padding-block", doc: "", kind: CompletionItemKind.Property}
 	{name: "padding-block-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "padding-block-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "padding-block", doc: "", kind: CompletionItemKind.Property}
-	{name: "padding-bottom", doc: "", kind: CompletionItemKind.Property}
+	{name: "padding-bottom", doc: "pb", kind: CompletionItemKind.Property}
+	{name: "padding-inline", doc: "", kind: CompletionItemKind.Property}
 	{name: "padding-inline-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "padding-inline-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "padding-inline", doc: "", kind: CompletionItemKind.Property}
-	{name: "padding-left", doc: "", kind: CompletionItemKind.Property}
-	{name: "padding-right", doc: "", kind: CompletionItemKind.Property}
-	{name: "padding-top", doc: "", kind: CompletionItemKind.Property}
-	{name: "padding", doc: "", kind: CompletionItemKind.Property}
+	{name: "padding-left", doc: "pl", kind: CompletionItemKind.Property}
+	{name: "padding-right", doc: "pr", kind: CompletionItemKind.Property}
+	{name: "padding-top", doc: "pt", kind: CompletionItemKind.Property}
 	{name: "page-break-after", doc: "", kind: CompletionItemKind.Property}
 	{name: "page-break-before", doc: "", kind: CompletionItemKind.Property}
 	{name: "page-break-inside", doc: "", kind: CompletionItemKind.Property}
-	{name: "page", doc: "", kind: CompletionItemKind.Property}
 	{name: "paint-order", doc: "", kind: CompletionItemKind.Property}
-	{name: "perspective-origin", doc: "", kind: CompletionItemKind.Property}
 	{name: "perspective", doc: "", kind: CompletionItemKind.Property}
-	{name: "place-content", doc: "", kind: CompletionItemKind.Property}
-	{name: "place-items", doc: "", kind: CompletionItemKind.Property}
-	{name: "place-self", doc: "", kind: CompletionItemKind.Property}
-	{name: "pointer-events", doc: "", kind: CompletionItemKind.Property}
-	{name: "position-anchor", doc: "", kind: CompletionItemKind.Property}
-	{name: "position-area", doc: "", kind: CompletionItemKind.Property}
-	{name: "position-try-fallbacks", doc: "", kind: CompletionItemKind.Property}
-	{name: "position-try-order", doc: "", kind: CompletionItemKind.Property}
-	{name: "position-try", doc: "", kind: CompletionItemKind.Property}
-	{name: "position-visibility", doc: "", kind: CompletionItemKind.Property}
-	{name: "position", doc: "", kind: CompletionItemKind.Property}
-	{name: "print-color-adjust", doc: "", kind: CompletionItemKind.Property}
+	{name: "perspective-origin", doc: "", kind: CompletionItemKind.Property}
+	{name: "place-content", doc: "jac", kind: CompletionItemKind.Property}
+	{name: "place-items", doc: "jai", kind: CompletionItemKind.Property}
+	{name: "place-self", doc: "jas", kind: CompletionItemKind.Property}
+	{name: "pointer-events", doc: "pe", kind: CompletionItemKind.Property}
+	{name: "position", doc: "pos", kind: CompletionItemKind.Property}
+	{name: "prefix", doc: "", kind: CompletionItemKind.Property}
 	{name: "quotes", doc: "", kind: CompletionItemKind.Property}
-	{name: "r", doc: "", kind: CompletionItemKind.Property}
-	{name: "reading-flow", doc: "", kind: CompletionItemKind.Property}
-	{name: "reading-order", doc: "", kind: CompletionItemKind.Property}
+	{name: "range", doc: "", kind: CompletionItemKind.Property}
 	{name: "resize", doc: "", kind: CompletionItemKind.Property}
-	{name: "right", doc: "", kind: CompletionItemKind.Property}
-	{name: "rotate", doc: "", kind: CompletionItemKind.Property}
-	{name: "row-gap", doc: "", kind: CompletionItemKind.Property}
+	{name: "right", doc: "r", kind: CompletionItemKind.Property}
+	{name: "row-gap", doc: "rg", kind: CompletionItemKind.Property}
 	{name: "ruby-align", doc: "", kind: CompletionItemKind.Property}
+	{name: "ruby-merge", doc: "", kind: CompletionItemKind.Property}
 	{name: "ruby-overhang", doc: "", kind: CompletionItemKind.Property}
 	{name: "ruby-position", doc: "", kind: CompletionItemKind.Property}
-	{name: "rx", doc: "", kind: CompletionItemKind.Property}
-	{name: "ry", doc: "", kind: CompletionItemKind.Property}
-	{name: "scale", doc: "", kind: CompletionItemKind.Property}
+	{name: "ruby-span", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-behavior", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-initial-target", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-margin", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-margin-block", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-margin-block-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-margin-block-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-margin-block", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-margin-bottom", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-margin-inline", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-margin-inline-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-margin-inline-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-margin-inline", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-margin-left", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-margin-right", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-margin-top", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-margin", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-marker-group", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-padding", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-padding-block", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-padding-block-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-padding-block-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-padding-block", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-padding-bottom", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-padding-inline", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-padding-inline-end", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-padding-inline-start", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-padding-inline", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-padding-left", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-padding-right", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-padding-top", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-padding", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-snap-align", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-snap-coordinate", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-snap-destination", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-snap-points-x", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-snap-points-y", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-snap-stop", doc: "", kind: CompletionItemKind.Property}
 	{name: "scroll-snap-type", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-target-group", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-timeline-axis", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-timeline-name", doc: "", kind: CompletionItemKind.Property}
-	{name: "scroll-timeline", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-snap-type-x", doc: "", kind: CompletionItemKind.Property}
+	{name: "scroll-snap-type-y", doc: "", kind: CompletionItemKind.Property}
+	{name: "scrollbar-3dlight-color", doc: "", kind: CompletionItemKind.Property}
+	{name: "scrollbar-arrow-color", doc: "", kind: CompletionItemKind.Property}
+	{name: "scrollbar-base-color", doc: "", kind: CompletionItemKind.Property}
 	{name: "scrollbar-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "scrollbar-gutter", doc: "", kind: CompletionItemKind.Property}
+	{name: "scrollbar-darkshadow-color", doc: "", kind: CompletionItemKind.Property}
+	{name: "scrollbar-face-color", doc: "", kind: CompletionItemKind.Property}
+	{name: "scrollbar-highlight-color", doc: "", kind: CompletionItemKind.Property}
+	{name: "scrollbar-shadow-color", doc: "", kind: CompletionItemKind.Property}
+	{name: "scrollbar-track-color", doc: "", kind: CompletionItemKind.Property}
 	{name: "scrollbar-width", doc: "", kind: CompletionItemKind.Property}
 	{name: "shape-image-threshold", doc: "", kind: CompletionItemKind.Property}
 	{name: "shape-margin", doc: "", kind: CompletionItemKind.Property}
 	{name: "shape-outside", doc: "", kind: CompletionItemKind.Property}
 	{name: "shape-rendering", doc: "", kind: CompletionItemKind.Property}
 	{name: "speak-as", doc: "", kind: CompletionItemKind.Property}
+	{name: "src", doc: "", kind: CompletionItemKind.Property}
 	{name: "stop-color", doc: "", kind: CompletionItemKind.Property}
 	{name: "stop-opacity", doc: "", kind: CompletionItemKind.Property}
+	{name: "stroke", doc: "", kind: CompletionItemKind.Property}
 	{name: "stroke-dasharray", doc: "", kind: CompletionItemKind.Property}
 	{name: "stroke-dashoffset", doc: "", kind: CompletionItemKind.Property}
 	{name: "stroke-linecap", doc: "", kind: CompletionItemKind.Property}
@@ -457,102 +428,112 @@ export const properties = [
 	{name: "stroke-miterlimit", doc: "", kind: CompletionItemKind.Property}
 	{name: "stroke-opacity", doc: "", kind: CompletionItemKind.Property}
 	{name: "stroke-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "stroke", doc: "", kind: CompletionItemKind.Property}
+	{name: "suffix", doc: "", kind: CompletionItemKind.Property}
+	{name: "svg", doc: "", kind: CompletionItemKind.Property}
+	{name: "symbols", doc: "", kind: CompletionItemKind.Property}
+	{name: "system", doc: "", kind: CompletionItemKind.Property}
 	{name: "tab-size", doc: "", kind: CompletionItemKind.Property}
 	{name: "table-layout", doc: "", kind: CompletionItemKind.Property}
+	{name: "text-align", doc: "ta", kind: CompletionItemKind.Property}
 	{name: "text-align-last", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-align", doc: "", kind: CompletionItemKind.Property}
 	{name: "text-anchor", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-autospace", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-box-edge", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-box-trim", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-box", doc: "", kind: CompletionItemKind.Property}
 	{name: "text-combine-upright", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-decoration-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-decoration-inset", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-decoration-line", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-decoration-skip-ink", doc: "", kind: CompletionItemKind.Property}
+	{name: "text-decoration", doc: "td", kind: CompletionItemKind.Property}
+	{name: "text-decoration-color", doc: "tdc", kind: CompletionItemKind.Property}
+	{name: "text-decoration-line", doc: "tdl", kind: CompletionItemKind.Property}
 	{name: "text-decoration-skip", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-decoration-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-decoration-thickness", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-decoration", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-emphasis-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-emphasis-position", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-emphasis-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-emphasis", doc: "", kind: CompletionItemKind.Property}
+	{name: "text-decoration-skip-ink", doc: "tdsi", kind: CompletionItemKind.Property}
+	{name: "text-decoration-style", doc: "tds", kind: CompletionItemKind.Property}
+	{name: "text-decoration-thickness", doc: "tdt", kind: CompletionItemKind.Property}
+	{name: "text-emphasis", doc: "te", kind: CompletionItemKind.Property}
+	{name: "text-emphasis-color", doc: "tec", kind: CompletionItemKind.Property}
+	{name: "text-emphasis-position", doc: "tep", kind: CompletionItemKind.Property}
+	{name: "text-emphasis-style", doc: "tes", kind: CompletionItemKind.Property}
 	{name: "text-indent", doc: "", kind: CompletionItemKind.Property}
 	{name: "text-justify", doc: "", kind: CompletionItemKind.Property}
 	{name: "text-orientation", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-overflow", doc: "", kind: CompletionItemKind.Property}
+	{name: "text-overflow", doc: "tof", kind: CompletionItemKind.Property}
 	{name: "text-rendering", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-shadow", doc: "", kind: CompletionItemKind.Property}
+	{name: "text-shadow", doc: "txs", kind: CompletionItemKind.Property}
 	{name: "text-size-adjust", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-spacing-trim", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-transform", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-underline-offset", doc: "", kind: CompletionItemKind.Property}
+	{name: "text-transform", doc: "tt", kind: CompletionItemKind.Property}
+	{name: "text-underline-offset", doc: "tuo", kind: CompletionItemKind.Property}
 	{name: "text-underline-position", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-wrap-mode", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-wrap-style", doc: "", kind: CompletionItemKind.Property}
-	{name: "text-wrap", doc: "", kind: CompletionItemKind.Property}
-	{name: "timeline-scope", doc: "", kind: CompletionItemKind.Property}
-	{name: "top", doc: "", kind: CompletionItemKind.Property}
+	{name: "top", doc: "t", kind: CompletionItemKind.Property}
 	{name: "touch-action", doc: "", kind: CompletionItemKind.Property}
-	{name: "transform-box", doc: "", kind: CompletionItemKind.Property}
-	{name: "transform-origin", doc: "", kind: CompletionItemKind.Property}
-	{name: "transform-style", doc: "", kind: CompletionItemKind.Property}
 	{name: "transform", doc: "", kind: CompletionItemKind.Property}
-	{name: "transition-behavior", doc: "", kind: CompletionItemKind.Property}
+	{name: "transform-box", doc: "", kind: CompletionItemKind.Property}
+	{name: "transform-origin", doc: "origin", kind: CompletionItemKind.Property}
+	{name: "transform-style", doc: "", kind: CompletionItemKind.Property}
+	{name: "transition", doc: "tween", kind: CompletionItemKind.Property}
 	{name: "transition-delay", doc: "", kind: CompletionItemKind.Property}
 	{name: "transition-duration", doc: "", kind: CompletionItemKind.Property}
 	{name: "transition-property", doc: "", kind: CompletionItemKind.Property}
 	{name: "transition-timing-function", doc: "", kind: CompletionItemKind.Property}
-	{name: "transition", doc: "", kind: CompletionItemKind.Property}
 	{name: "translate", doc: "", kind: CompletionItemKind.Property}
 	{name: "unicode-bidi", doc: "", kind: CompletionItemKind.Property}
-	{name: "user-modify", doc: "", kind: CompletionItemKind.Property}
-	{name: "user-select", doc: "", kind: CompletionItemKind.Property}
-	{name: "vector-effect", doc: "", kind: CompletionItemKind.Property}
-	{name: "vertical-align", doc: "", kind: CompletionItemKind.Property}
-	{name: "view-timeline-axis", doc: "", kind: CompletionItemKind.Property}
-	{name: "view-timeline-inset", doc: "", kind: CompletionItemKind.Property}
-	{name: "view-timeline-name", doc: "", kind: CompletionItemKind.Property}
-	{name: "view-timeline", doc: "", kind: CompletionItemKind.Property}
-	{name: "view-transition-class", doc: "", kind: CompletionItemKind.Property}
-	{name: "view-transition-name", doc: "", kind: CompletionItemKind.Property}
+	{name: "unicode-range", doc: "", kind: CompletionItemKind.Property}
+	{name: "user-select", doc: "us", kind: CompletionItemKind.Property}
+	{name: "user-zoom", doc: "", kind: CompletionItemKind.Property}
+	{name: "vertical-align", doc: "va", kind: CompletionItemKind.Property}
+	{name: "viewport-fit", doc: "", kind: CompletionItemKind.Property}
 	{name: "visibility", doc: "", kind: CompletionItemKind.Property}
-	{name: "white-space-collapse", doc: "", kind: CompletionItemKind.Property}
-	{name: "white-space", doc: "", kind: CompletionItemKind.Property}
+	{name: "white-space", doc: "ws", kind: CompletionItemKind.Property}
 	{name: "widows", doc: "", kind: CompletionItemKind.Property}
-	{name: "width", doc: "", kind: CompletionItemKind.Property}
+	{name: "width", doc: "w", kind: CompletionItemKind.Property}
 	{name: "will-change", doc: "", kind: CompletionItemKind.Property}
 	{name: "word-break", doc: "", kind: CompletionItemKind.Property}
 	{name: "word-spacing", doc: "", kind: CompletionItemKind.Property}
+	{name: "word-wrap", doc: "", kind: CompletionItemKind.Property}
 	{name: "writing-mode", doc: "", kind: CompletionItemKind.Property}
+	{name: "z-index", doc: "zi", kind: CompletionItemKind.Property}
+	{name: "zoom", doc: "", kind: CompletionItemKind.Property}
+	{name: "border-bottom-radius", doc: "rdb", kind: CompletionItemKind.Property}
+	{name: "border-left-radius", doc: "rdl", kind: CompletionItemKind.Property}
+	{name: "border-right-radius", doc: "rdr", kind: CompletionItemKind.Property}
+	{name: "border-top-radius", doc: "rdt", kind: CompletionItemKind.Property}
+	{name: "border-x", doc: "bdx", kind: CompletionItemKind.Property}
+	{name: "border-x-color", doc: "bcx", kind: CompletionItemKind.Property}
+	{name: "border-x-style", doc: "bsx", kind: CompletionItemKind.Property}
+	{name: "border-x-width", doc: "bwx", kind: CompletionItemKind.Property}
+	{name: "border-y", doc: "bdy", kind: CompletionItemKind.Property}
+	{name: "border-y-color", doc: "bcy", kind: CompletionItemKind.Property}
+	{name: "border-y-style", doc: "bsy", kind: CompletionItemKind.Property}
+	{name: "border-y-width", doc: "bwy", kind: CompletionItemKind.Property}
+	{name: "ease", doc: "ea", kind: CompletionItemKind.Property}
+	{name: "ease-all-delay", doc: "eaw", kind: CompletionItemKind.Property}
+	{name: "ease-all-duration", doc: "ead", kind: CompletionItemKind.Property}
+	{name: "ease-all-function", doc: "eaf", kind: CompletionItemKind.Property}
+	{name: "ease-box", doc: "eb", kind: CompletionItemKind.Property}
+	{name: "ease-box-delay", doc: "ebw", kind: CompletionItemKind.Property}
+	{name: "ease-box-duration", doc: "ebd", kind: CompletionItemKind.Property}
+	{name: "ease-box-function", doc: "ebf", kind: CompletionItemKind.Property}
+	{name: "ease-colors", doc: "ec", kind: CompletionItemKind.Property}
+	{name: "ease-colors-delay", doc: "ecw", kind: CompletionItemKind.Property}
+	{name: "ease-colors-duration", doc: "ecd", kind: CompletionItemKind.Property}
+	{name: "ease-colors-function", doc: "ecf", kind: CompletionItemKind.Property}
+	{name: "ease-opacity", doc: "eo", kind: CompletionItemKind.Property}
+	{name: "ease-opacity-delay", doc: "eow", kind: CompletionItemKind.Property}
+	{name: "ease-opacity-duration", doc: "eod", kind: CompletionItemKind.Property}
+	{name: "ease-opacity-function", doc: "eof", kind: CompletionItemKind.Property}
+	{name: "ease-transform", doc: "et", kind: CompletionItemKind.Property}
+	{name: "ease-transform-delay", doc: "etw", kind: CompletionItemKind.Property}
+	{name: "ease-transform-duration", doc: "etd", kind: CompletionItemKind.Property}
+	{name: "ease-transform-function", doc: "etf", kind: CompletionItemKind.Property}
+	{name: "hue", doc: "", kind: CompletionItemKind.Property}
+	{name: "margin-x", doc: "mx", kind: CompletionItemKind.Property}
+	{name: "margin-y", doc: "my", kind: CompletionItemKind.Property}
+	{name: "padding-x", doc: "px", kind: CompletionItemKind.Property}
+	{name: "padding-y", doc: "py", kind: CompletionItemKind.Property}
+	{name: "rotate", doc: "", kind: CompletionItemKind.Property}
+	{name: "scale-x", doc: "", kind: CompletionItemKind.Property}
+	{name: "scale-y", doc: "", kind: CompletionItemKind.Property}
+	{name: "size", doc: "s", kind: CompletionItemKind.Property}
+	{name: "skew-x", doc: "", kind: CompletionItemKind.Property}
+	{name: "skew-y", doc: "", kind: CompletionItemKind.Property}
 	{name: "x", doc: "", kind: CompletionItemKind.Property}
 	{name: "y", doc: "", kind: CompletionItemKind.Property}
-	{name: "z-index", doc: "", kind: CompletionItemKind.Property}
-	{name: "zoom", doc: "", kind: CompletionItemKind.Property}
-	{name: "-moz-float-edge", doc: "", kind: CompletionItemKind.Property}
-	{name: "-moz-force-broken-image-icon", doc: "", kind: CompletionItemKind.Property}
-	{name: "-moz-orient", doc: "", kind: CompletionItemKind.Property}
-	{name: "-moz-user-focus", doc: "", kind: CompletionItemKind.Property}
-	{name: "-moz-user-input", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-box-reflect", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-border-before", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-mask-box-image", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-mask-composite", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-mask-position-x", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-mask-position-y", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-mask-repeat-x", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-mask-repeat-y", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-tap-highlight-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-text-fill-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-text-security", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-text-stroke", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-text-stroke-color", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-text-stroke-width", doc: "", kind: CompletionItemKind.Property}
-	{name: "-webkit-touch-callout", doc: "", kind: CompletionItemKind.Property}
-
+	{name: "z", doc: "", kind: CompletionItemKind.Property}
 	{name: "ac", doc: "align-content", kind: CompletionItemKind.Property}
 	{name: "ai", doc: "align-items", kind: CompletionItemKind.Property}
 	{name: "as", doc: "align-self", kind: CompletionItemKind.Property}
@@ -720,5 +701,4 @@ export const properties = [
 	{name: "px", doc: "padding-x", kind: CompletionItemKind.Property}
 	{name: "py", doc: "padding-y", kind: CompletionItemKind.Property}
 	{name: "s", doc: "size", kind: CompletionItemKind.Property}
-
 ]

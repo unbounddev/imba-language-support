@@ -3,10 +3,22 @@ import type {ExtensionContext, TextDocument, Position, CancellationToken, Comple
 import {tags} from "./completion/html"
 import {properties} from "./completion/css/properties"
 
+def CSSScope doc, pos, tok, ctx
+	const inlineRegex = /\s*<[a-zA-Z0-9]+[^>]*\[[^\]]*$/
+	const globalLineRegex = /^\s*global\s+css\s+/
+	const cssLineRegex = /^\s*css\s+/
+	const linePrefix = doc.lineAt(pos).text.substring(0, pos.character);
+
+	if inlineRegex.test(linePrefix) or globalLineRegex.test(linePrefix) or cssLineRegex.test(linePrefix)
+		return true
+	# TODO: Handle block scope for inline, global, and css
+	return false
+
+
 class ImbaCompletionProvider
 	def provideCompletionItems(doc\TextDocument, pos\Position, tok\CancellationToken, ctx\CompletionContext)
 		const items\CompletionItem[] = [];
-		const linePrefix = doc.lineAt(pos).text.substring(0, pos.character);
+		const linePrefix = doc.lineAt(pos).text.substring(0, pos.character)
 		const tagRegex = /<[a-zA-Z0-9]+[^>]*\[/
 		# only render htmlTags if '<' is trigger
 		if ctx.triggerCharacter != null and ctx.triggerCharacter == "<"
@@ -20,7 +32,7 @@ class ImbaCompletionProvider
 		# only show css properties if within html tag with opened inline style bracket
 		# TODO: show css properties if within a css block
 		# TODO: account for multi line inline styles
-		if tagRegex.test(linePrefix)
+		if CSSScope(doc, pos, tok, ctx)
 			for property of properties
 				const item = new CompletionItem(property.label, property.kind)
 				item.documentation = property.documentation

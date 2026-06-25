@@ -36,6 +36,11 @@ fs.readFile(mdnPath, 'utf8', do(err, data)
 					property: JSON.parse(property.replace(/'/g, '"').trim())
 				}
 			)
+		
+		for prop of imbaProperties
+			if typeof prop.property == "string" and prop.property != prop.alias and !properties.includes(prop.property) and imbaProperties.find(do(p) p.alias == prop.property) == null
+				imbaProperties.push({alias: prop.property, property: prop.alias})
+
 		const propertyItems = properties.map(do(p)
 			const aliases = imbaProperties
 				.filter(do(a) 

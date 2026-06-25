@@ -740,4 +740,51 @@ export const properties = [
 	{label: "olc", documentation: "outline-color", kind: CompletionItemKind.Property}
 	{label: "ols", documentation: "outline-style", kind: CompletionItemKind.Property}
 	{label: "olw", documentation: "outline-width", kind: CompletionItemKind.Property}
+	{label: "padding-x", documentation: "px", kind: CompletionItemKind.Property}
+	{label: "padding-y", documentation: "py", kind: CompletionItemKind.Property}
+	{label: "margin-x", documentation: "mx", kind: CompletionItemKind.Property}
+	{label: "margin-y", documentation: "my", kind: CompletionItemKind.Property}
+	{label: "size", documentation: "s", kind: CompletionItemKind.Property}
+	{label: "justify-align", documentation: "ja", kind: CompletionItemKind.Property}
+	{label: "text-emphasis-thickness", documentation: "tet", kind: CompletionItemKind.Property}
+	{label: "border-x", documentation: "bdx", kind: CompletionItemKind.Property}
+	{label: "border-y", documentation: "bdy", kind: CompletionItemKind.Property}
+	{label: "border-x-style", documentation: "bsx", kind: CompletionItemKind.Property}
+	{label: "border-y-style", documentation: "bsy", kind: CompletionItemKind.Property}
+	{label: "border-x-width", documentation: "bwx", kind: CompletionItemKind.Property}
+	{label: "border-y-width", documentation: "bwy", kind: CompletionItemKind.Property}
+	{label: "border-x-color", documentation: "bcx", kind: CompletionItemKind.Property}
+	{label: "border-y-color", documentation: "bcy", kind: CompletionItemKind.Property}
+	{label: "border-top-radius", documentation: "rdt", kind: CompletionItemKind.Property}
+	{label: "border-bottom-radius", documentation: "rdb", kind: CompletionItemKind.Property}
+	{label: "border-left-radius", documentation: "rdl", kind: CompletionItemKind.Property}
+	{label: "border-right-radius", documentation: "rdr", kind: CompletionItemKind.Property}
+	{label: "grid-column-gap", documentation: "gcg", kind: CompletionItemKind.Property}
+	{label: "grid-row-gap", documentation: "grg", kind: CompletionItemKind.Property}
+	{label: "content@before", documentation: "prefix", kind: CompletionItemKind.Property}
+	{label: "content@after", documentation: "suffix", kind: CompletionItemKind.Property}
+	{label: "ease-styles", documentation: "e", kind: CompletionItemKind.Property}
+	{label: "ease-all", documentation: "ea", kind: CompletionItemKind.Property}
+	{label: "ease-all-duration", documentation: "ead", kind: CompletionItemKind.Property}
+	{label: "ease-all-function", documentation: "eaf", kind: CompletionItemKind.Property}
+	{label: "ease-all-delay", documentation: "eaw", kind: CompletionItemKind.Property}
+	{label: "ease-styles-duration", documentation: "esd", kind: CompletionItemKind.Property}
+	{label: "ease-styles-function", documentation: "esf", kind: CompletionItemKind.Property}
+	{label: "ease-styles-delay", documentation: "esw", kind: CompletionItemKind.Property}
+	{label: "ease-opacity", documentation: "eo", kind: CompletionItemKind.Property}
+	{label: "ease-opacity-duration", documentation: "eod", kind: CompletionItemKind.Property}
+	{label: "ease-opacity-function", documentation: "eof", kind: CompletionItemKind.Property}
+	{label: "ease-opacity-delay", documentation: "eow", kind: CompletionItemKind.Property}
+	{label: "ease-colors", documentation: "ec", kind: CompletionItemKind.Property}
+	{label: "ease-colors-duration", documentation: "ecd", kind: CompletionItemKind.Property}
+	{label: "ease-colors-function", documentation: "ecf", kind: CompletionItemKind.Property}
+	{label: "ease-colors-delay", documentation: "ecw", kind: CompletionItemKind.Property}
+	{label: "ease-box", documentation: "eb", kind: CompletionItemKind.Property}
+	{label: "ease-box-duration", documentation: "ebd", kind: CompletionItemKind.Property}
+	{label: "ease-box-function", documentation: "ebf", kind: CompletionItemKind.Property}
+	{label: "ease-box-delay", documentation: "ebw", kind: CompletionItemKind.Property}
+	{label: "ease-transform", documentation: "et", kind: CompletionItemKind.Property}
+	{label: "ease-transform-duration", documentation: "etd", kind: CompletionItemKind.Property}
+	{label: "ease-transform-function", documentation: "etf", kind: CompletionItemKind.Property}
+	{label: "ease-transform-delay", documentation: "etw", kind: CompletionItemKind.Property}
 ]

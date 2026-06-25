@@ -31,7 +31,8 @@
     "watch": "imba build --node.external +vscode -w ./src/extension.imba",
     "pretest": "npm run build",
     "clean": "rm -rf ~/.local/share/code-server/extensions/unbounddev.imba-language-support-${npm_package_version}",
-    "test": "rm -rf ~/.local/share/code-server/extensions/unbounddev.imba-language-support-${npm_package_version} && cp -r . ~/.local/share/code-server/extensions/unbounddev.imba-language-support-${npm_package_version}"
+    "test": "rm -rf ~/.local/share/code-server/extensions/unbounddev.imba-language-support-${npm_package_version} && cp -r . ~/.local/share/code-server/extensions/unbounddev.imba-language-support-${npm_package_version}",
+    "gen:css:properties": "imba build scripts/getCSSProperties.imba && node dist/getCSSProperties.js"
   },
   "devDependencies": {
     "@types/node": "22.x",

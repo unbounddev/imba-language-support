@@ -1,7 +1,7 @@
 import {commands, window, languages, CompletionItem, CompletionItemKind, SnippetString, MarkdownString} from 'vscode';
 import type {ExtensionContext, TextDocument, Position, CancellationToken, CompletionContext} from 'vscode';
 import {tags} from "./completion/html"
-import {properties} from "./completion/css"
+import {properties} from "./completion/css/properties"
 
 class ImbaCompletionProvider
 	def provideCompletionItems(doc\TextDocument, pos\Position, tok\CancellationToken, ctx\CompletionContext)
@@ -22,7 +22,8 @@ class ImbaCompletionProvider
 		# TODO: account for multi line inline styles
 		if tagRegex.test(linePrefix)
 			for property of properties
-				const item = new CompletionItem(property.name, property.kind)
+				const item = new CompletionItem(property.label, property.kind)
+				item.documentation = property.documentation
 				items.push(item)
 		return items
 	# def resolveCompletionItem

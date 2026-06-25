@@ -1,0 +1,8 @@
+[submodule "dep/content"]
+	path = dep/content
+	url = https://github.com/mdn/content.git
+	shallow = true
+[submodule "dep/imba"]
+	path = dep/imba
+	url = https://github.com/imba/imba.git
+	shallow = true
